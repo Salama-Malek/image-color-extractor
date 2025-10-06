@@ -57,7 +57,7 @@ const AboutModal = ({ isOpen, onClose }: AboutModalProps) => {
 
         <div className="mt-6 flex items-center justify-center gap-4 text-sm font-medium">
           <a
-            href="https://github.com/placeholder"
+            href="https://github.com/Salama-Malek"
             target="_blank"
             rel="noreferrer noopener"
             className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-slate-200 transition hover:border-indigo-400/60 hover:bg-indigo-500/10 hover:text-white"
@@ -65,7 +65,7 @@ const AboutModal = ({ isOpen, onClose }: AboutModalProps) => {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/placeholder"
+            href="https://www.linkedin.com/in/salama-malek/"
             target="_blank"
             rel="noreferrer noopener"
             className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-slate-200 transition hover:border-indigo-400/60 hover:bg-indigo-500/10 hover:text-white"

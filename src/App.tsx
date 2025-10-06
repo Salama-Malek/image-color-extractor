@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import UploadArea from './components/UploadArea';
-import { useColorExtraction } from './hooks/useColorExtraction';
-import ColorPalette from './components/ColorPalette';
-import AboutModal from './components/AboutModal';
+import { useState } from "react";
+import UploadArea from "./components/UploadArea";
+import { useColorExtraction } from "./hooks/useColorExtraction";
+import ColorPalette from "./components/ColorPalette";
+import AboutModal from "./components/AboutModal";
 
 const App = () => {
-  const { colors, imageSrc, isProcessing, error, processFile, reset } = useColorExtraction({ colorCount: 8 });
+  const { colors, imageSrc, isProcessing, error, processFile, reset } =
+    useColorExtraction({ colorCount: 8 });
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const hasResults = Boolean(colors.length || imageSrc);
 
@@ -20,15 +21,28 @@ const App = () => {
 
       <nav className="relative z-20 border-b border-white/5 bg-slate-950/60 backdrop-blur">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
-          <span className="text-sm font-semibold tracking-[0.35em] text-indigo-300 sm:text-base">Image Color Extractor</span>
+          <span className="text-sm font-semibold tracking-[0.35em] text-indigo-300 sm:text-base">
+            Image Color Extractor
+          </span>
           <button
             type="button"
             onClick={() => setIsAboutOpen(true)}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 transition hover:border-indigo-400/60 hover:bg-indigo-500/10 hover:text-white"
             aria-label="About the developer"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9zm0-5.25v-4.5m0-2.25h.008v.008H12z" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              className="h-5 w-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9zm0-5.25v-4.5m0-2.25h.008v.008H12z"
+              />
             </svg>
           </button>
         </div>
@@ -36,10 +50,15 @@ const App = () => {
 
       <main className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col items-center px-4 pb-24 pt-12 text-center sm:pt-16">
         <header className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.6em] text-indigo-300/90">Palette inspiration reimagined</p>
-          <h1 className="text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">Instantly craft beautiful color stories</h1>
+          <p className="text-xs uppercase tracking-[0.6em] text-indigo-300/90">
+            Palette inspiration reimagined
+          </p>
+          <h1 className="text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
+            Instantly craft beautiful color stories
+          </h1>
           <p className="mx-auto max-w-2xl text-sm text-slate-300/80 sm:text-base">
-            Upload an image to reveal its dominant colors and build palettes that shine in your next creative project.
+            Upload an image to reveal its dominant colors and build palettes
+            that shine in your next creative project.
           </p>
         </header>
 
@@ -66,9 +85,15 @@ const App = () => {
 
           {imageSrc && (
             <div className="w-full rounded-3xl border border-white/10 bg-slate-900/60 p-5 shadow-2xl backdrop-blur-lg">
-              <h2 className="mb-3 text-left text-xs uppercase tracking-[0.45em] text-slate-300/70">Preview</h2>
-              <div className="overflow-hidden rounded-2xl border border-white/5">
-                <img src={imageSrc} alt="Uploaded preview" className="h-full w-full object-cover" />
+              <h2 className="mb-3 text-left text-xs uppercase tracking-[0.45em] text-slate-300/70">
+                Preview
+              </h2>
+              <div className="mx-auto max-w-xl overflow-hidden rounded-2xl border border-white/5">
+                <img
+                  src={imageSrc}
+                  alt="Uploaded preview"
+                  className="w-full h-auto object-contain max-h-80"
+                />
               </div>
             </div>
           )}
