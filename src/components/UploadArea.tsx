@@ -50,17 +50,18 @@ const UploadArea = ({ onFileSelect, isProcessing = false }: UploadAreaProps) => 
 
   return (
     <div
-      className={`relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed transition-colors duration-200 ${
+      className={`relative w-full max-w-3xl rounded-3xl border-2 border-dashed p-[1px] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/70 ${
         isDragActive
-          ? 'border-indigo-400 bg-indigo-500/10'
-          : 'border-slate-700 bg-slate-900/40 hover:border-indigo-300'
-      } ${isProcessing ? 'opacity-70 pointer-events-none' : ''}`}
+          ? 'border-indigo-400/70 shadow-[0_0_25px_rgba(99,102,241,0.25)]'
+          : 'border-white/10 shadow-[0_18px_45px_rgba(15,23,42,0.45)]'
+      } ${isProcessing ? 'pointer-events-none opacity-60' : ''}`}
       onClick={handleClick}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
       role="button"
       tabIndex={0}
+      aria-busy={isProcessing}
     >
       <input
         ref={inputRef}
@@ -69,15 +70,19 @@ const UploadArea = ({ onFileSelect, isProcessing = false }: UploadAreaProps) => 
         className="hidden"
         onChange={handleInputChange}
       />
-      <div className="flex flex-col items-center gap-3 px-8 py-14 text-center">
-        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-800/80 text-indigo-300">
+      <div
+        className={`flex flex-col items-center gap-4 rounded-[calc(1.5rem-1px)] bg-slate-900/70 px-10 py-16 text-center transition-colors duration-300 ${
+          isDragActive ? 'bg-indigo-500/10' : ''
+        }`}
+      >
+        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-indigo-300 shadow-inner shadow-white/10">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
-            className="h-6 w-6"
+            className="h-7 w-7"
           >
             <path
               strokeLinecap="round"
@@ -87,11 +92,12 @@ const UploadArea = ({ onFileSelect, isProcessing = false }: UploadAreaProps) => 
           </svg>
         </span>
         <div className="space-y-1">
-          <p className="text-lg font-semibold text-slate-100">
-            {isProcessing ? 'Processing image…' : 'Drop image here'}
+          <p className="text-lg font-semibold text-white sm:text-xl">
+            {isProcessing ? 'Processing image…' : 'Drag & drop an image'}
           </p>
-          <p className="text-sm text-slate-400">or click to browse your files</p>
+          <p className="text-sm text-slate-300/80 sm:text-base">or click to browse your files</p>
         </div>
+        <p className="text-xs uppercase tracking-[0.45em] text-slate-400">Supports PNG, JPG, GIF &amp; more</p>
       </div>
     </div>
   );

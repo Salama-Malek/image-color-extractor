@@ -13,13 +13,18 @@ export const useColorExtraction = (options: UseColorExtractionOptions = {}) => {
   const [error, setError] = useState<string | null>(null);
   const previousUrlRef = useRef<string | null>(null);
 
+  const revokePreviousUrl = useCallback(() => {
+    if (previousUrlRef.current) {
+      URL.revokeObjectURL(previousUrlRef.current);
+      previousUrlRef.current = null;
+    }
+  }, []);
+
   useEffect(() => {
     return () => {
-      if (previousUrlRef.current) {
-        URL.revokeObjectURL(previousUrlRef.current);
-      }
+      revokePreviousUrl();
     };
-  }, []);
+  }, [revokePreviousUrl]);
 
   const processFile = useCallback(
     async (file: File) => {
@@ -31,9 +36,7 @@ export const useColorExtraction = (options: UseColorExtractionOptions = {}) => {
       setError(null);
       setIsProcessing(true);
 
-      if (previousUrlRef.current) {
-        URL.revokeObjectURL(previousUrlRef.current);
-      }
+      revokePreviousUrl();
 
       const objectUrl = URL.createObjectURL(file);
       previousUrlRef.current = objectUrl;
@@ -52,8 +55,16 @@ export const useColorExtraction = (options: UseColorExtractionOptions = {}) => {
         setIsProcessing(false);
       }
     },
-    [colorCount]
+    [colorCount, revokePreviousUrl]
   );
+
+  const reset = useCallback(() => {
+    revokePreviousUrl();
+    setColors([]);
+    setImageSrc(null);
+    setError(null);
+    setIsProcessing(false);
+  }, [revokePreviousUrl]);
 
   return {
     colors,
@@ -61,6 +72,7 @@ export const useColorExtraction = (options: UseColorExtractionOptions = {}) => {
     isProcessing,
     error,
     processFile,
+    reset,
   };
 };
 

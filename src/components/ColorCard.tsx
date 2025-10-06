@@ -18,14 +18,14 @@ const ColorCard = ({ hex }: ColorCardProps) => {
   };
 
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-slate-800 bg-slate-900/80 shadow-lg transition-transform duration-200 hover:-translate-y-1">
-      <div className="flex h-24 items-center justify-center" style={{ backgroundColor: hex }} />
-      <div className="flex items-center justify-between px-4 py-3">
-        <span className="font-mono text-sm text-slate-200">{hex}</span>
+    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-xl transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_20px_35px_rgba(15,23,42,0.45)]">
+      <div className="flex h-28 items-center justify-center" style={{ backgroundColor: hex }} />
+      <div className="flex items-center justify-between px-5 py-4">
+        <span className="font-mono text-sm tracking-wide text-slate-100">{hex}</span>
         <button
           type="button"
           onClick={handleCopy}
-          className="rounded-full bg-slate-800 px-3 py-1 text-xs font-medium text-slate-200 transition-colors hover:bg-indigo-500/80 hover:text-white"
+          className="rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-100 transition hover:border-indigo-400/60 hover:bg-indigo-500/20"
         >
           {copied ? 'Copied!' : 'Copy'}
         </button>
