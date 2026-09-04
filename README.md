@@ -1,5 +1,9 @@
 # Image Color Extractor
 
+![Deploy](https://github.com/Salama-Malek/image-color-extractor/actions/workflows/deploy.yml/badge.svg)
+
+Live demo: https://salama-malek.github.io/image-color-extractor/
+
 Drag in an image, get its dominant color palette instantly — no upload, no server, all in the browser.
 
 ## Overview
@@ -23,7 +27,7 @@ Image Color Extractor is a client-side React + TypeScript app that reads an uplo
 - React 18 + TypeScript
 - Vite 5 (with `@vitejs/plugin-react` / SWC variant available)
 - Tailwind CSS 3 (with PostCSS + Autoprefixer)
-- `gh-pages` for GitHub Pages deployment
+- GitHub Actions for GitHub Pages deployment
 
 ## Getting started
 
@@ -55,11 +59,7 @@ Produces a production build in `dist/`.
 
 ### Deploy
 
-```bash
-npm run deploy
-```
-
-Runs `predeploy` (build) then publishes the `dist/` folder to GitHub Pages via `gh-pages`. The app is configured to be served from `/image-color-extractor/` (see `vite.config.ts`) and its published homepage is `https://salama-malek.github.io/image-color-extractor`.
+Deployment is automated via the "Deploy" GitHub Actions workflow (`.github/workflows/deploy.yml`), which builds the app and publishes `dist/` to GitHub Pages on every push to `main` (or via manual `workflow_dispatch`). The app is configured to be served from `/image-color-extractor/` (see `vite.config.ts`) and its published homepage is `https://salama-malek.github.io/image-color-extractor/`.
 
 ### Tests
 
