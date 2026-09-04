@@ -4,6 +4,8 @@
 
 Live demo: https://salama-malek.github.io/image-color-extractor/
 
+![Screenshot of the app](docs/screenshot.jpg)
+
 Drag in an image, get its dominant color palette instantly — no upload, no server, all in the browser.
 
 ## Overview
