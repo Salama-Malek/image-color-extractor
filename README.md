@@ -95,3 +95,7 @@ None required — the app is fully client-side with no external services or API 
 ## Author
 
 Salama Malek — [GitHub](https://github.com/Salama-Malek) · [LinkedIn](https://www.linkedin.com/in/salama-malek/)
+
+## License
+
+MIT. See [LICENSE](LICENSE).
